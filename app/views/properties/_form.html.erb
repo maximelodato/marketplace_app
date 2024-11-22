@@ -1,0 +1,33 @@
+<%= form_with(model: @property) do |form| %>
+    <% if @property.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@property.errors.count, "erreur") %> empêchent ce bien d'être sauvegardé :</h2>
+  
+        <ul>
+          <% @property.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div>
+      <%= form.label :title, 'Titre' %><br>
+      <%= form.text_field :title %>
+    </div>
+  
+    <div>
+      <%= form.label :price, 'Prix' %><br>
+      <%= form.number_field :price, step: 0.01 %>
+    </div>
+  
+    <div>
+      <%= form.label :description, 'Description' %><br>
+      <%= form.text_area :description %>
+    </div>
+  
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
+  

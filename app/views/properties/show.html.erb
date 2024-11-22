@@ -1,0 +1,11 @@
+<h1><%= @property.title %></h1>
+<p>Prix : <%= number_to_currency(@property.price) %></p>
+<p><%= @property.description %></p>
+
+<h3>Contacter le Propriétaire</h3>
+<p>Email : <%= mail_to @owner.email %></p>
+
+<% if user_signed_in? && @property.user == current_user %>
+  <%= link_to 'Modifier', edit_property_path(@property) %> |
+  <%= link_to 'Supprimer', @property, method: :delete, data: { confirm: 'Êtes-vous sûr ?' } %>
+<% end %>

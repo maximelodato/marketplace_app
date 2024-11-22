@@ -1,0 +1,13 @@
+<h1>Vos Biens Immobiliers</h1>
+
+<%= link_to 'Ajouter un Nouveau Bien', new_property_path %>
+
+<% @properties.each do |property| %>
+  <div>
+    <h3><%= link_to property.title, property %></h3>
+    <p>Prix : <%= number_to_currency(property.price) %></p>
+    <p><%= truncate(property.description, length: 100) %></p>
+    <%= link_to 'Modifier', edit_property_path(property) %> |
+    <%= link_to 'Supprimer', property, method: :delete, data: { confirm: 'Êtes-vous sûr ?' } %>
+  </div>
+<% end %>

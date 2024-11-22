@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MarketplaceApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true %>
+  </head>
+
+  <body>
+    <nav>
+      <% if user_signed_in? %>
+        <%= link_to 'Tableau de Bord', dashboard_path %> |
+        <%= link_to 'Nouveau Bien', new_property_path %> |
+        <%= link_to 'Déconnexion', destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to 'Inscription', new_user_registration_path %> |
+        <%= link_to 'Connexion', new_user_session_path %>
+      <% end %>
+    </nav>
+    <%= yield %>
+  </body>
+</html>
